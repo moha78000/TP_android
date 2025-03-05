@@ -32,15 +32,20 @@ public class MainActivity extends AppCompatActivity {
         tx1 = findViewById(R.id.textView);
         button1 = findViewById(R.id.button);
 
+      button1.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+              calculerMensualite();
+          }
+      });
+
 
     }
-    public void onClick(View view) {
-        button1.setOnClickListener();
+    private void calculerMensualite() {
         String capitalStr = et1.getText().toString();
         String tauxStr = et2.getText().toString();
         String dureeStr = et3.getText().toString();
 
-        // Vérification si les champs ne sont pas vides
         if (!capitalStr.isEmpty() && !tauxStr.isEmpty() && !dureeStr.isEmpty()) {
             double capital = Double.parseDouble(capitalStr);
             double taux = Double.parseDouble(tauxStr) / 100; // Convertir en décimal
