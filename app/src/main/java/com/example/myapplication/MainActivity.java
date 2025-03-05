@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,6 +34,10 @@ public class MainActivity extends AppCompatActivity {
         tx1 = findViewById(R.id.textView);
         button1 = findViewById(R.id.button);
 
+        et1.addTextChangedListener(watcher);
+        et2.addTextChangedListener(watcher);
+        et3.addTextChangedListener(watcher);
+
       button1.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
@@ -61,6 +67,28 @@ public class MainActivity extends AppCompatActivity {
             tx1.setText("Veuillez remplir tous les champs !");
         }
     }
+    private TextWatcher watcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before,int count) {
+            // Appel de la méthode calculerMensualité
+
+            calculerMensualite();
+
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+
+        }
+    };
+
 
 
 }
